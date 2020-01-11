@@ -8,7 +8,7 @@ class Grammar(commands.Cog):
         self.bot = bot
 
     @commands.Cog.listener()
-    async def on_message(message):
+    async def on_message(self, message):
         await message.channel.send(message)
 
 def setup(bot):
