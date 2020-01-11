@@ -9,7 +9,8 @@ class Grammar(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        await message.channel.send(message)
+        channel = message.channel
+        await channel.send('hi')
 
 def setup(bot):
     bot.add_cog(Grammar(bot))
