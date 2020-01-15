@@ -6,7 +6,7 @@ class ReactOnWord(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @bot.group()
+    @commands.group()
     async def react(self, ctx):
         if ctx.invoked_subcommand is None:
             await ctx.send('not good')
