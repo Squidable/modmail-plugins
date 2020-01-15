@@ -8,6 +8,8 @@ class ReactOnWord(commands.Cog):
 
     @bot.group()
     async def react(self, ctx):
+        if ctx.invoked_subcommand is None:
+            await ctx.send('not good')
 
     @react.command()
     async def word(self, ctx, *, word):
