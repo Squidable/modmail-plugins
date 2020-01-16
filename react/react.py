@@ -18,8 +18,9 @@ class ReactOnWord(commands.Cog):
     @react.command()
     async def word(self, ctx, *, word):
         await self.db.find_one_and_update(
-            {"_id": "reactonword-config"}
-            {"$set": {"config": {"word": word}}}
+            {"_id": "reactonword-config"},
+            {"$set": {"config": {"word": word}}},
+            upsert=True,
         )
 
     @commands.Cog.listener()
