@@ -11,14 +11,16 @@ class ReactOnWord(commands.Cog):
 
     @commands.group()
     @checks.has_permissions(PermissionLevel.ADMIN)
-    async def react(self, ctx):
+    async def setreact(self, ctx):
         if ctx.invoked_subcommand is None:
             await ctx.send('not good')
 
     @react.command()
     async def word(self, ctx, *, word):
-
-        await ctx.send(f'hello and {word}')
+        await self.db.find_one_and_update(
+            {"_id": "reactonword-config"}
+            {"$set": {"config": {"word": word}}}
+        )
 
     @commands.Cog.listener()
     async def on_message(self, message):
