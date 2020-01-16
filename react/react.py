@@ -16,7 +16,7 @@ class ReactOnWord(commands.Cog):
             await ctx.send('not good')
 
     @setreact.command()
-    async def word(self, ctx, *, word):
+    async def word(self, ctx, word):
         await self.coll.find_one_and_update(
             {"_id": "reactonword-config"},
             {"$set": {"word": {"word": word}}},
@@ -25,7 +25,7 @@ class ReactOnWord(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        setword = await self.coll.find_one({"_id": "word"})
+        setword = await self.coll.find_one({"_id": "reactonword-config"})
         if setword is None:
             if 'BANANA' in message.content.upper():
                 await message.add_reaction('\N{BANANA}')
