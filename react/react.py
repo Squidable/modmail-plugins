@@ -30,7 +30,8 @@ class ReactOnWord(commands.Cog):
             if 'BANANA' in message.content.upper():
                 await message.add_reaction('\N{BANANA}')
         else:
-            if setword["word"]["word"].upper in message.content.upper():
+            word = setword["word"]["word"]
+            if word.upper in message.content.upper():
                 await message.add_reaction('\N{BANANA}')
 
 def setup(bot):
