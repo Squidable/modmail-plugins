@@ -19,7 +19,7 @@ class ReactOnWord(commands.Cog):
     async def word(self, ctx, word):
         await self.coll.find_one_and_update(
             {"_id": "reactonword-config"},
-            {"$set": {"word": {"word": word}}},
+            {"$set": {"word": word}},
             upsert=True,
         )
 
@@ -30,7 +30,7 @@ class ReactOnWord(commands.Cog):
             if 'BANANA' in message.content.upper():
                 await message.add_reaction('\N{BANANA}')
         else:
-            word = setword["word"]["word"]
+            word = setword["word"]
             if word.upper in message.content.upper():
                 await message.add_reaction('\N{BANANA}')
 
