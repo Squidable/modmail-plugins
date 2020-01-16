@@ -2,6 +2,9 @@ import discord
 from discord.ext import commands
 from core import checks
 from core.models import PermissionLevel
+import logging
+
+log = logging.getLogger("Modmail")
 
 class ReactOnWord(commands.Cog):
     """Reacts with a banana emoji if someone says a certain word."""
@@ -31,7 +34,7 @@ class ReactOnWord(commands.Cog):
                 await message.add_reaction('\N{BANANA}')
         else:
             word = setword["word"]["word"]
-            await ctx.send(type(word))
+            log.info(type(word))
             if word.upper in message.content.upper():
                 await message.add_reaction('\N{BANANA}')
 
