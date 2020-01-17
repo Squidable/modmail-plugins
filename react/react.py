@@ -29,7 +29,7 @@ class ReactOnWord(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, message):
         setword = await self.coll.find_one({"_id": "reactonword-config"})
-        if setword is None:
+        if setword["word"]["word"] is None:
             if 'BANANA' in message.content.upper():
                 await message.add_reaction('\N{BANANA}')
         else:
