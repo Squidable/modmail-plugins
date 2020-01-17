@@ -28,6 +28,7 @@ class ReactOnWord(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
+        log.info("A message has been sent.")
         setword = await self.coll.find_one({"_id": "reactonword-config"})
         if setword is None:
             if 'BANANA' in message.content.upper():
