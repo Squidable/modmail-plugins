@@ -35,7 +35,7 @@ class ReactOnWord(commands.Cog):
         else:
             word = setword["word"]["word"]
             message.channel.send(type(word))
-            if word.upper in message.content.upper():
+            if str(word).upper in message.content.upper():
                 await message.add_reaction('\N{BANANA}')
 
 def setup(bot):
